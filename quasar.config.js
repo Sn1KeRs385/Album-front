@@ -88,7 +88,7 @@ module.exports = configure(function (/* ctx */) {
         ],
       ],
       alias: {
-        views: path.join(__dirname, './src/views'),
+        utils: path.join(__dirname, './src/utils'),
       },
     },
 
@@ -113,7 +113,7 @@ module.exports = configure(function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: ['Notify'],
     },
 
     // animations: 'all', // --- includes all animations
