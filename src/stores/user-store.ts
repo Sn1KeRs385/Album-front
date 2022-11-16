@@ -12,7 +12,7 @@ interface UserStoreInterface {
 
 const storageUserTokens = localStorage.getItem('userTokens')
 
-export const useUserStore = defineStore('counter', {
+export const useUserStore = defineStore('user', {
   state: (): UserStoreInterface => ({
     user: undefined,
     tokens: storageUserTokens

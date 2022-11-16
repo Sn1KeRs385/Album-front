@@ -18,6 +18,15 @@
       "components/*": [
         "src/components/*"
       ],
+      "constants/*": [
+        "src/constants/*"
+      ],
+      "enums/*": [
+        "src/enums/*"
+      ],
+      "interfaces/*": [
+        "src/interfaces/*"
+      ],
       "layouts/*": [
         "src/layouts/*"
       ],
@@ -30,6 +39,9 @@
       "utils/*": [
         "src/utils/*"
       ],
+      "file-uploader/*": [
+        "src/modules/file-uploader/*"
+      ]
     }
   },
   "include": [
