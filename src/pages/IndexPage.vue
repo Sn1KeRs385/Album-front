@@ -3,7 +3,7 @@ import MediaList from 'components/MediaList.vue'
 </script>
 
 <template>
-  <q-page padding class="column">
+  <q-page padding>
     <media-list />
   </q-page>
 </template>
