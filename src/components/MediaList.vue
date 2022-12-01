@@ -21,7 +21,7 @@ onMounted(() => {
     Thumbs: {
       Carousel: {
         fill: false,
-        center: false,
+        center: true,
       },
     },
   })
