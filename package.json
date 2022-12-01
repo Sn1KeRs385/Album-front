@@ -13,7 +13,8 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
+    "@fancyapps/ui": "^4.0.31",
+    "@quasar/extras": "^1.15.6",
     "axios": "^0.21.1",
     "pinia": "^2.0.11",
     "quasar": "^2.10.1",

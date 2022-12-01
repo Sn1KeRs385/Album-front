@@ -22,10 +22,6 @@ const uploadProgress = computed(() => {
 })
 
 const uploadProgressPercent = computed(() => Math.round(uploadProgress.value * 100))
-
-const deleteFileFromList = (file: FileUploadInfoInterface) => {
-  fileUploadStore.removeFileFromList(file)
-}
 </script>
 
 <template>
