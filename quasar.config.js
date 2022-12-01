@@ -88,7 +88,11 @@ module.exports = configure(function (/* ctx */) {
         ],
       ],
       alias: {
-        utils: path.join(__dirname, './src/utils'),
+        'constants': path.join(__dirname, './src/constants'),
+        // 'enums': path.join(__dirname, './src/enums'),
+        'interfaces': path.join(__dirname, './src/interfaces'),
+        'utils': path.join(__dirname, './src/utils'),
+        'file-uploader': path.join(__dirname, './src/modules/file-uploader'),
       },
     },
 

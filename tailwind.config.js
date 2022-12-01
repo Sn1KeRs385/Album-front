@@ -9,6 +9,7 @@ const spacing0to500 = Object.fromEntries(
 module.exports = {
   prefix: 'tw-',
   content: ['./src/**/*.{vue,js,ts,jsx,tsx}', './index.html'],
+  important: true,
 
   theme: {
     extend: {

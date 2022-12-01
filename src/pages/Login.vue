@@ -9,7 +9,6 @@ import { useRoute, useRouter } from 'vue-router'
 
 const { t } = useI18n()
 const userStore = useUserStore()
-const route = useRoute()
 const router = useRouter()
 
 interface FormDataInterface {

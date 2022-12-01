@@ -7,7 +7,7 @@ interface ExtraParamsObject {
 }
 
 export default (error: AxiosError, { formFields }: ExtraParamsObject = { formFields: {} }) => {
-  let message = t('axios.undefinedError')
+  let message = t('axios.undefinedErrorRetryLate')
 
   Object.keys(formFields).forEach((fieldKey) => {
     formFields[fieldKey].errors = []
