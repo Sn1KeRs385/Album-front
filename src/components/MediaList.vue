@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import MediaUploadButton from 'components/MediaUpload/MediaUploadButton.vue'
 import FileUploadProgress from 'file-uploader/components/FileUploadProgress.vue'
-import { computed, onBeforeMount, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeMount, onMounted, ref } from 'vue'
 import { useFilesStore } from 'stores/files-store'
 import FileInterface from 'interfaces/FileInterface'
-import CollectionName from 'file-uploader/enums/collection-name'
-import { QScrollObserver } from 'quasar'
+import CollectionName, {
+  isImageCollection,
+  isVideoCollection,
+} from 'file-uploader/enums/collection-name'
+import { Loading, QScrollObserver } from 'quasar'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { Fancybox } from '@fancyapps/ui/src/Fancybox/Fancybox.js'
 import '@fancyapps/ui/dist/fancybox.css'
 
 const fileStore = useFilesStore()
-onBeforeMount(() => {
-  fileStore.loadNextPage()
-})
+// onBeforeMount(() => {
+//   fileStore.loadNextPage()
+// })
 
 onMounted(() => {
   Fancybox.bind('[data-fancybox="gallery"]', {
@@ -24,6 +27,9 @@ onMounted(() => {
         center: true,
       },
     },
+  })
+  nextTick(() => {
+    checkScrollHaveEmptyPlace()
   })
 })
 
@@ -39,8 +45,27 @@ const filePreviewUrl = computed(() => (file: FileInterface) => {
   return filePreview.url
 })
 
+const getMaxScroll = () => {
+  return (document?.body?.scrollHeight || 0) - (window.innerHeight || 0)
+}
+
+const checkScrollHaveEmptyPlace = () => {
+  const maxScroll = getMaxScroll()
+  if (maxScroll === 0 && fileStore.nextPageExists) {
+    if (fileStore.page === 0) {
+      Loading.show()
+    }
+    fileStore.loadNextPage().then(() => {
+      if (fileStore.page === 1) {
+        Loading.hide()
+      }
+      nextTick(checkScrollHaveEmptyPlace)
+    })
+  }
+}
+
 const onScroll = (scrollInfo: { position: { top: number } }) => {
-  const maxScroll = (document?.body?.scrollHeight || 0) - (window.innerHeight || 0)
+  const maxScroll = getMaxScroll()
   if (maxScroll - scrollInfo.position.top <= 250) {
     fileStore.loadNextPage()
   }

@@ -8,7 +8,17 @@ const fileUploadStore = useFileUploadStore()
 
 const fileInput = ref<InstanceType<typeof QFile>>()
 const onChooseFiles = (files: File[]) => {
-  fileUploadStore.addFilesToUploadQueue(files, CollectionName.IMAGE)
+  files.forEach((file) => {
+    let collectionName
+    if (/^video/gi.test(file.type)) {
+      collectionName = CollectionName.VIDEO
+    } else if (/^image/gi.test(file.type)) {
+      collectionName = CollectionName.IMAGE
+    }
+    if (collectionName) {
+      fileUploadStore.addFileToUploadQueue(file, collectionName)
+    }
+  })
   fileUploadStore.startUpload()
 }
 const openChooseFileDialog = () => {

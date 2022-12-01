@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import FileInterface from 'interfaces/FileInterface'
+import ApiFileInterface from 'interfaces/Api/FileInterface'
 import { api } from 'boot/axios'
 import apiRoutes from 'src/contants/api-routes'
 import apiErrorHandler from 'utils/api-error-handler'
@@ -34,12 +35,12 @@ export const useFilesStore = defineStore('files', {
       await api
         .get(apiRoutes.v1.files, { params: { page: this.page + 1, per_page: perPage } })
         .then((response) => {
-          const data = response.data as PaginationResponseInterface<FileInterface>
+          const data = response.data as PaginationResponseInterface<ApiFileInterface>
           this.page = this.page + 1
           if (data.per_page * data.current_page > data.to) {
             this.nextPageExists = false
           }
-          this.files = this.files.concat(data.items)
+          this.files = this.files.concat(data.items as FileInterface[])
         })
         .catch(apiErrorHandler)
 
