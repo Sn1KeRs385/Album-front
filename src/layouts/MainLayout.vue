@@ -1,18 +1,12 @@
+<script setup lang="ts">
+import MainHeader from 'components/Headers/MainHeader.vue'
+</script>
+
 <template>
-  <q-layout view="hHh lpR fFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-toolbar-title>Album</q-toolbar-title>
-      </q-toolbar>
+  <q-layout view="hHh LpR fff" class="tw-bg-[#FBFAFC] -tw-mt-12px lg:-tw-mt-24px">
+    <main-header />
 
-      <!--      <q-tabs align="left">-->
-      <!--        <q-route-tab to="/page1" label="Page One" />-->
-      <!--        <q-route-tab to="/page2" label="Page Two" />-->
-      <!--        <q-route-tab to="/page3" label="Page Three" />-->
-      <!--      </q-tabs>-->
-    </q-header>
-
-    <q-page-container>
+    <q-page-container class="tw-mt-24px lg:tw-mt-48px">
       <router-view />
     </q-page-container>
   </q-layout>

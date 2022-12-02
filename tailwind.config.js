@@ -13,6 +13,12 @@ module.exports = {
 
   theme: {
     extend: {
+      colors: {
+        primary: '#604AEC',
+        dark: '#222325',
+        semidark: '#91929E',
+        light: '#FFFFFF',
+      },
       borderWidth: {
         ...spacing0to100,
       },
@@ -31,6 +37,20 @@ module.exports = {
 
       minWidth: {
         spacing0to500,
+      },
+
+      fontSize: {
+        ...spacing0to100,
+      },
+
+      lineHeight: {
+        100: '100%',
+        120: '120%',
+        140: '140%',
+        150: '150%',
+        160: '160%',
+        170: '170%',
+        180: '180%',
       },
     },
   },

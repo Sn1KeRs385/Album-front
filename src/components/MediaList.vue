@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import MediaUploadButton from 'components/MediaUpload/MediaUploadButton.vue'
 import FileUploadProgress from 'file-uploader/components/FileUploadProgress.vue'
-import { computed, nextTick, onBeforeMount, onMounted, ref } from 'vue'
+import { computed, nextTick, onMounted, ref } from 'vue'
 import { useFilesStore } from 'stores/files-store'
 import FileInterface from 'interfaces/FileInterface'
-import CollectionName, {
-  isImageCollection,
-  isVideoCollection,
-} from 'file-uploader/enums/collection-name'
+import CollectionName from 'file-uploader/enums/collection-name'
 import { Loading, QScrollObserver } from 'quasar'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -15,9 +12,6 @@ import { Fancybox } from '@fancyapps/ui/src/Fancybox/Fancybox.js'
 import '@fancyapps/ui/dist/fancybox.css'
 
 const fileStore = useFilesStore()
-// onBeforeMount(() => {
-//   fileStore.loadNextPage()
-// })
 
 onMounted(() => {
   Fancybox.bind('[data-fancybox="gallery"]', {

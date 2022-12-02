@@ -5,7 +5,7 @@ import { api } from 'boot/axios'
 import apiRoutes from 'src/contants/api-routes'
 import apiErrorHandler from 'utils/api-error-handler'
 import { useUserStore } from 'stores/user-store'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 const { t } = useI18n()
 const userStore = useUserStore()
@@ -46,12 +46,12 @@ const sendCode = async () => {
   formData.code.characterNumber = data.character_numbers
   formData.code.value = []
 
+  isCodeSent.value = true
+
   if (formData.code.value) {
     formData.code.value = data.code.split('')
-    login()
+    await login()
   }
-
-  isCodeSent.value = true
 }
 
 const login = async () => {
@@ -70,9 +70,9 @@ const login = async () => {
 
   userStore.saveTokens(response.data)
   if (router.currentRoute.value.redirectedFrom) {
-    router.push(router.currentRoute.value.redirectedFrom)
+    await router.push(router.currentRoute.value.redirectedFrom)
   } else {
-    router.push({
+    await router.push({
       name: 'index',
     })
   }

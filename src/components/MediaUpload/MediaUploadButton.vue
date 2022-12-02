@@ -31,7 +31,7 @@ const openChooseFileDialog = () => {
     <q-btn
       class="glossy"
       round
-      color="deep-orange"
+      color="primary"
       icon="cloud_download"
       @click="openChooseFileDialog"
     />
